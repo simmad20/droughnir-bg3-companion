@@ -11,7 +11,7 @@ Live-Checkliste, Build-Wege, Level-Guide, Ausrüstung mit Upgrade-Pfaden, Kampf-
 |---|---|
 | `index.html` | Die komplette App – eine eigenständige Datei, alle Pfade relativ |
 | `droughnir.png` | Dein Charakterbild (Porträt in Kopfleiste und Charakterbogen) |
-| `.nojekyll` | GitHub Pages liefert die Dateien ohne Jekyll-Verarbeitung aus |
+| `.nojekyll` | Schaltet Jekyll aus: GitHub Pages liefert die Dateien 1:1 aus, statt sie erst durch den Jekyll-Generator zu schicken |
 
 ## Eigenes Charakterbild
 
