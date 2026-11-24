@@ -1544,6 +1544,5 @@
  "Zauber-SG": "Spell DC",
  "TP": "HP",
  "RK": "AC",
- "SG": "DC",
- "Startwerte nach Charaktererstellung (KON 12 → 25 TP auf Stufe 3).": "Starting values after character creation (CON 12 → 25 HP at level 3)."
+ "SG": "DC"
 }
