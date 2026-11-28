@@ -14,11 +14,19 @@ html,body{margin:0;min-height:100%;background:var(--obs);color:var(--parch);font
 body{background:radial-gradient(1200px 600px at 50% -200px,#2a1f2e 0%,transparent 70%),radial-gradient(900px 500px at 50% 120%,#1b1410 0%,transparent 70%),var(--obs)}
 a{color:inherit}
 .wrap{max-width:1120px;margin:0 auto;padding:28px 20px 40px}
+.top{position:relative;text-align:center;padding:26px 0 34px}
+.eyebrow{font-family:Cinzel,Georgia,serif;font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:rgba(200,168,107,.85)}
+h1{font-family:Cinzel,Georgia,serif;font-weight:500;font-size:clamp(34px,5vw,52px);letter-spacing:.12em;text-transform:uppercase;margin:10px 0 16px;color:var(--parch);text-shadow:0 2px 18px rgba(200,168,107,.18)}
+.orn{display:flex;align-items:center;justify-content:center;gap:12px}
+.orn span{width:min(160px,28vw);height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.6))}
+.orn span:last-child{transform:scaleX(-1)}
+.orn i{width:9px;height:9px;transform:rotate(45deg);border:1px solid var(--brass);background:rgba(200,168,107,.25)}
+.fs{position:absolute;right:0;top:0;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border:1px solid rgba(200,168,107,.4);background:rgba(9,8,12,.7);color:rgba(232,224,208,.85);font:inherit;font-size:15px;cursor:pointer;transition:border-color .2s,color .2s}
+.fs:hover,.fs:focus-visible{border-color:var(--brass);color:var(--parch)}
+.fs svg{width:16px;height:16px;color:var(--brass)}
+@media (max-width:560px){.fs span{display:none}.fs{padding:0 10px}.top{padding-top:56px}}
 .brand{display:flex;align-items:center;gap:10px;font-family:Cinzel,Georgia,serif;letter-spacing:.16em;text-transform:uppercase;font-size:14px;color:rgba(200,168,107,.9)}
 .brand svg{width:16px;height:16px}
-h1{font-family:Cinzel,Georgia,serif;font-weight:500;font-size:clamp(28px,4vw,42px);letter-spacing:.04em;margin:18px 0 6px}
-.lead{margin:0 0 26px;font-size:17px;color:rgba(232,224,208,.78);max-width:640px;line-height:1.5}
-.rule{height:1px;background:linear-gradient(90deg,transparent,rgba(200,168,107,.45),transparent);margin:0 0 28px}
 .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
 .card{position:relative;display:flex;flex-direction:column;text-decoration:none;border:1px solid rgba(200,168,107,.28);background:linear-gradient(180deg,#1a1721,#100e14);box-shadow:0 18px 40px -24px rgba(0,0,0,.9);transition:border-color .2s,transform .2s,box-shadow .2s;outline:none}
 .card::before,.card::after{content:"";position:absolute;width:14px;height:14px;border-color:var(--brass);border-style:solid;opacity:.7;z-index:3;pointer-events:none}
@@ -61,15 +69,17 @@ h1{font-family:Cinzel,Georgia,serif;font-weight:500;font-size:clamp(28px,4vw,42p
 </head>
 <body>
 <main class="wrap">
- <div class="brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5 3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2M9.5 17.5 21 6V3h-3L6.5 14.5M11 19l-6-6M8 16l-4 4M5 21l-2-2"/></svg>Baldur's Gate 3 · Companions</div>
- <h1>Wähle deinen Companion</h1>
- <p class="lead">Jeder Charakter hat seine eigene Seite mit Checkliste, Build-Wegen, Level-Guide und Ausrüstung. Stand und Fortschritt siehst du hier direkt – zurück kommst du in jeder App über „Übersicht“ oben links.</p>
- <div class="rule"></div>
+ <header class="top">
+  <button type="button" class="fs" id="fs" title="Vollbild" aria-label="Vollbild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path id="fsi" d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg><span id="fst">Vollbild</span></button>
+  <div class="eyebrow">Baldur's Gate 3</div>
+  <h1>Companions</h1>
+  <div class="orn"><span></span><i></i><span></span></div>
+ </header>
  <div class="grid" id="grid"></div>
  <div class="foot"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Alle Daten bleiben lokal in diesem Browser – jeder Companion speichert getrennt.</span><span>Fan-Projekt · Bilder von bg3.wiki</span></div>
 </main>
 <script>
-const C=[{"id": "droughnir", "name": "Droughnir", "href": "./droughnir/", "key": "droughnir-bg3-v1", "ui": "droughnir-bg3-ui", "db": "droughnir-bg3-assets", "pid": "p-droughnir", "img": "./droughnir/droughnir.png", "col": "#c8502c", "race": "Roter Drachenblütiger", "cls": "Paladin", "role": "Glaskanone mit Großwaffe", "oaths": {"ob": ["Eidbrecher", "#c8502c"], "ven": ["Eid der Rache", "#d9a441"]}, "defOath": "ob", "defRoute": {"ob": "w4", "ven": "v2"}, "routes": {"w4": "Eidbrecher 7 / Hexenmeister 5", "w3": "Eidbrecher 10 / Kämpfer 2", "w1": "Reiner Eidbrecher 12", "w2": "Eidbrecher 7 / Zauberer 5", "v2": "Rache 7 / Hexklinge 5", "v1": "Rache 8 / Kampfmeister 4", "v4": "Reine Rache 12", "v3": "Rache 6 / Schattenmagie 6"}, "checks": ["a1", "o2", "o1", "o11", "o15", "o12", "o4", "a2", "a3", "a4", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16", "a17", "o14", "o13", "o10", "a18", "b1", "o16", "b2", "b3", "o7", "b4", "o17", "o5", "o6", "b5", "c1", "c2", "c3", "o18", "c4", "o19", "c5", "c6"], "icon": "sword"}, {"id": "sylvaran", "name": "Sylvaran", "href": "./sylvaran/", "key": "druid-bg3-v1", "ui": "druid-bg3-ui", "db": "druid-bg3-assets", "pid": "p-sylvaran", "img": "", "col": "#6bbf9b", "race": "Halbelf (Wald)", "cls": "Druide", "role": "Beschwörer & Gestaltwandler", "oaths": {"moon": ["Zirkel des Mondes", "#9fb6ff"], "spores": ["Sporenzirkel", "#8fc96a"], "stars": ["Zirkel der Sterne", "#e5c46b"], "land": ["Zirkel des Landes", "#6bbf9b"]}, "defOath": "moon", "defRoute": {"moon": "moon", "spores": "spores", "stars": "stars", "land": "land"}, "routes": {"moon": "Mond-Druide 12", "spores": "Sporen-Nekro-Druide 12", "stars": "Sternen-Druide 12", "moonbarb": "Mond 10 / Barbar 2", "land": "Land-Druide 12", "sporenecro": "Sporen 6 / Nekromant 6"}, "checks": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "e1", "e2", "e3", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"], "icon": "paw"}];
+const C=[{"id": "droughnir", "name": "Droughnir", "href": "./droughnir/", "key": "droughnir-bg3-v1", "ui": "droughnir-bg3-ui", "db": "droughnir-bg3-assets", "pid": "p-droughnir", "img": "./droughnir/droughnir.png", "col": "#c8502c", "race": "Roter Drachenblütiger", "cls": "Paladin", "role": "Glaskanone mit Großwaffe", "oaths": {"ob": ["Eidbrecher", "#c8502c"], "ven": ["Eid der Rache", "#d9a441"]}, "defOath": "ob", "defRoute": {"ob": "w4", "ven": "v2"}, "routes": {"w4": "Eidbrecher 7 / Hexenmeister 5", "w3": "Eidbrecher 10 / Kämpfer 2", "w1": "Reiner Eidbrecher 12", "w2": "Eidbrecher 7 / Zauberer 5", "v2": "Rache 7 / Hexklinge 5", "v1": "Rache 8 / Kampfmeister 4", "v4": "Reine Rache 12", "v3": "Rache 6 / Schattenmagie 6"}, "checks": ["a1", "o2", "o1", "o11", "o15", "o12", "o4", "a2", "a3", "a4", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16", "a17", "o14", "o13", "o10", "a18", "b1", "o16", "b2", "b3", "o7", "b4", "o17", "o5", "o6", "b5", "c1", "c2", "c3", "o18", "c4", "o19", "c5", "c6"], "icon": "sword"}, {"id": "sylvaran", "name": "Sylvaran", "href": "./sylvaran/", "key": "druid-bg3-v1", "ui": "druid-bg3-ui", "db": "druid-bg3-assets", "pid": "p-sylvaran", "img": "./sylvaran/sylvaran.png", "col": "#6bbf9b", "race": "Halbelf (Wald)", "cls": "Druide", "role": "Beschwörer & Gestaltwandler", "oaths": {"moon": ["Zirkel des Mondes", "#9fb6ff"], "spores": ["Sporenzirkel", "#8fc96a"], "stars": ["Zirkel der Sterne", "#e5c46b"], "land": ["Zirkel des Landes", "#6bbf9b"]}, "defOath": "moon", "defRoute": {"moon": "moon", "spores": "spores", "stars": "stars", "land": "land"}, "routes": {"moon": "Mond-Druide 12", "spores": "Sporen-Nekro-Druide 12", "stars": "Sternen-Druide 12", "moonbarb": "Mond 10 / Barbar 2", "land": "Land-Druide 12", "sporenecro": "Sporen 6 / Nekromant 6"}, "checks": ["d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "e1", "e2", "e3", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8"], "icon": "paw"}];
 const ICON={sword:'<path d="M14.5 17.5 3 6V3h3l11.5 11.5"/><path d="M13 19l6-6M16 16l4 4M19 21l2-2"/>',
  paw:'<circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>'};
 const get=k=>{try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
@@ -99,6 +109,11 @@ function card(c){
  portrait(c).then(u=>setImg(u||c.img));
  return a;
 }
+const fsb=document.getElementById("fs"),fsi=document.getElementById("fsi"),fst=document.getElementById("fst");
+const ON="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3",OFF="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3";
+const fsUpd=()=>{const f=!!document.fullscreenElement;fsi.setAttribute("d",f?OFF:ON);fst.textContent=f?"Beenden":"Vollbild";fsb.title=f?"Vollbild beenden":"Vollbild";fsb.setAttribute("aria-label",fsb.title)};
+fsb.onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+document.addEventListener("fullscreenchange",fsUpd);if(!document.fullscreenEnabled)fsb.style.display="none";
 const g=document.getElementById("grid");C.forEach(c=>g.appendChild(card(c)));
 </script>
 </body>
